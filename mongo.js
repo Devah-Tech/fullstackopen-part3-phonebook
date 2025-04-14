@@ -26,15 +26,15 @@ if (process.argv.length === 3) {
   console.log('Phonebook:')
 
   Person.find({}).then(result => {
-		if (result.length === 0) {
-			console.log('Phonebook is empty')
-			mongoose.connection.close()
-		}
+    if (result.length === 0) {
+      console.log('Phonebook is empty')
+      mongoose.connection.close()
+    }
 
     result.forEach(person => {
       console.log(person.name, person.number)
-			mongoose.connection.close()
-    }) 	
+      mongoose.connection.close()
+    })
   })
 }
 
@@ -42,10 +42,10 @@ if (name && number) {
   const person = new Person({
     name: name,
     number: number
- 	 })
+  })
 
   person.save().then(result => {
-    console.log(`Added ${name} number ${number} to Phonebook`)
+    console.log(`Added ${name} number ${number} to Phonebook`, result)
     mongoose.connection.close()
   })
 }
